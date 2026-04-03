@@ -34,18 +34,18 @@ const TimerPage = () => {
   useEffect(() => {
     if (!running || remaining <= 0) return;
     intervalRef.current = setInterval(() => {
-      setRemaining((r) => {
-        if (r <= 1) {
-          setRunning(false);
-          return 0;
-        }
-        return r - 1;
-      });
+      setRemaining((r) => Math.max(0, r - 1));
     }, 1000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [running]);
+
+  useEffect(() => {
+    if (remaining === 0 && running) {
+      setRunning(false);
+    }
+  }, [remaining, running]);
 
   useEffect(() => {
     if (remaining === 0 && !alarmPlayed.current) {

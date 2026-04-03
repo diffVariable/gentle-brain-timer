@@ -26,7 +26,7 @@ export const playDoneAlarm = () => {
     osc2.frequency.value = ringFreq * 2.76; // bell overtone ratio
 
     const start = ctx.currentTime + i * pulseInterval;
-    const vol = 0.22 * (1 - i * 0.07); // gently fade out over pulses
+    const vol = Math.max(0.02, 0.22 * (1 - i * 0.07));
 
     gain.gain.setValueAtTime(0, start);
     gain.gain.linearRampToValueAtTime(vol, start + 0.008);
@@ -40,5 +40,8 @@ export const playDoneAlarm = () => {
     osc.stop(start + pulseDuration);
     osc2.start(start);
     osc2.stop(start + pulseDuration);
+
+    const totalDuration = pulseCount * pulseInterval + pulseDuration + 0.1;
+    setTimeout(() => ctx.close(), totalDuration * 1000);
   }
 };
