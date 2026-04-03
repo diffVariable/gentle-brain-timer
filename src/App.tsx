@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        height: "100vh",
         background:
           "linear-gradient(135deg, #fde8f0 0%, #ede0f8 50%, #fde8f0 100%)",
       }}
