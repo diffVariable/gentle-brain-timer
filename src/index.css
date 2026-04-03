@@ -1,0 +1,97 @@
+:root {
+  --pink-light: #fde8f0;
+  --pink-mid: #f9c4d8;
+  --pink-strong: #e8789a;
+  --pink-deep: #c45878;
+  --lavender: #c8a8e9;
+  --lavender-mid: #d4a8d8;
+  --lavender-light: #ede0f8;
+  --white: #ffffff;
+  --text-dark: #6b3050;
+  --text-mid: #a06080;
+  --text-light: #c490b0;
+  --shadow: rgba(200, 120, 160, 0.18);
+  --font: "Quicksand", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--pink-light);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
