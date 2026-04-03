@@ -10,11 +10,11 @@ const Home = () => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
-  const clockLabel = `${minutes}:${String(seconds).padStart(2, "0")}`;
+  const clockLabel = `${hours !== 0 ? String(hours).padStart(2, "0") + ":" : ""}${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
   const startTimer = () => {
     navigate(
-      `/timer?${hours !== 0 ? "h=" + hours : ""}m=${minutes}&s=${seconds}`,
+      `/timer?${hours !== 0 ? "h=" + hours + "&" : ""}m=${minutes}&s=${seconds}`,
     );
   };
 
@@ -22,7 +22,7 @@ const Home = () => {
     setHours(h);
     setMinutes(m);
     setSeconds(s);
-    navigate(`/timer?${h !== 0 ? "h=" + h : ""}m=${m}&s=${s}`);
+    navigate(`/timer?${h !== 0 ? "h=" + h + "&" : ""}m=${m}&s=${s}`);
   };
 
   return (

@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./styles/Navbar.module.css";
-
 const Navbar = () => {
   const { pathname } = useLocation();
 
@@ -9,7 +8,7 @@ const Navbar = () => {
       <div className={styles.links}>
         {pathname !== "/" && (
           <Link to="/" className={styles.link}>
-            Reset Timer
+            New Timer
           </Link>
         )}
         <a

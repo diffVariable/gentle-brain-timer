@@ -1,0 +1,141 @@
+.page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brainWrap {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.celebrate {
+  animation: celebrate 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes celebrate {
+  from {
+    transform: rotate(-5deg) scale(1.05);
+  }
+  to {
+    transform: rotate(5deg) scale(1.1);
+  }
+}
+
+.timeDisplay {
+  text-align: center;
+}
+
+.digits {
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(72px, 18vw, 160px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-shadow:
+    0 5px 0 #d48ab0,
+    0 10px 0 rgba(180, 100, 160, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.colon {
+  display: inline-block;
+  margin: 0 4px;
+  transition: opacity 0.1s;
+}
+
+.progressBar {
+  width: clamp(260px, 50vw, 480px);
+  height: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.6));
+  border-radius: 999px;
+  transition: width 1s linear;
+}
+
+.doneMsg {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ctrlBtn {
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.15s,
+    transform 0.1s;
+}
+
+.ctrlBtn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.backBtn {
+  background: rgba(255, 255, 255, 0.1);
+}

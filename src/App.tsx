@@ -9,7 +9,7 @@ export default function App() {
       style={{
         height: "100vh",
         background:
-          "linear-gradient(135deg, #fde8f0 0%, #ede0f8 50%, #fde8f0 100%)",
+          "linear-gradient(135deg, #c8a8e9 0%, #d4a8d8 50%, #e8b0cc 100%)",
       }}
     >
       <Navbar />
