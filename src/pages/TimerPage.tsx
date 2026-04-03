@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import Brain from "../components/Brain";
 import SparkleCanvas from "../components/SparkleCanvas";
 import styles from "./styles/TimerPage.module.css";
+import { playDoneAlarm } from "../utils";
 
 const TimerPage = () => {
   const [params] = useSearchParams();
@@ -16,6 +17,7 @@ const TimerPage = () => {
   const [remaining, setRemaining] = useState(totalSeconds);
   const [running, setRunning] = useState(true);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const alarmPlayed = useRef(false);
 
   const hh = String(Math.floor(remaining / 3600)).padStart(2, "0");
   const mm = String(Math.floor((remaining % 3600) / 60)).padStart(2, "0");
@@ -26,6 +28,7 @@ const TimerPage = () => {
   useEffect(() => {
     setRemaining(totalSeconds);
     setRunning(true);
+    alarmPlayed.current = false;
   }, [totalSeconds]);
 
   useEffect(() => {
@@ -44,6 +47,13 @@ const TimerPage = () => {
     };
   }, [running]);
 
+  useEffect(() => {
+    if (remaining === 0 && !alarmPlayed.current) {
+      alarmPlayed.current = true;
+      playDoneAlarm();
+    }
+  }, [remaining]);
+
   const handleToggle = () => {
     if (remaining <= 0) return;
     setRunning((r) => !r);
@@ -53,6 +63,7 @@ const TimerPage = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     setRemaining(totalSeconds);
     setRunning(false);
+    alarmPlayed.current = false;
   };
 
   const done = remaining === 0;
@@ -114,7 +125,7 @@ const TimerPage = () => {
             className={`${styles.ctrlBtn} ${styles.backBtn}`}
             onClick={() => navigate("/")}
           >
-            ← Back
+            ← New Timer
           </button>
         </div>
       </div>
